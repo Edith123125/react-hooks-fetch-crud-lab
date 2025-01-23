@@ -4,7 +4,7 @@ import QuestionItem from "./QuestionItem";
 function QuestionList({ deleteQuestion, updateCorrectAnswer }) {
   const [questions, setQuestions] = useState([]);
 
-  // Fetch questions from the API when the component mounts
+  // Fetching all questions from the API
   useEffect(() => {
     fetch("http://localhost:4000/questions")
       .then((response) => response.json())
@@ -17,7 +17,7 @@ function QuestionList({ deleteQuestion, updateCorrectAnswer }) {
       method: "DELETE",
     })
       .then(() => {
-        // Remove the deleted question from the state
+        
         setQuestions((prevQuestions) =>
           prevQuestions.filter((question) => question.id !== id)
         );
@@ -25,7 +25,7 @@ function QuestionList({ deleteQuestion, updateCorrectAnswer }) {
       .catch((error) => console.error("Error deleting question:", error));
   };
 
-  // Handle updating the correct answer
+  // updating the correct answer of a question
   const handleUpdateCorrectAnswer = (id, newCorrectIndex) => {
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "PATCH",
@@ -36,7 +36,7 @@ function QuestionList({ deleteQuestion, updateCorrectAnswer }) {
     })
       .then((response) => response.json())
       .then((updatedQuestion) => {
-        // Update the question in the state with the new correct answer
+        // Updating the correct answer when the API returns the updated question
         setQuestions((prevQuestions) =>
           prevQuestions.map((question) =>
             question.id === updatedQuestion.id

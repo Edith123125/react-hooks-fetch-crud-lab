@@ -10,7 +10,7 @@ function QuestionForm({ addQuestion }) {
     correctIndex: 0,
   });
 
-  // Handle input change event
+  // Handling input change event
   function handleChange(event) {
     setFormData({
       ...formData,
@@ -18,21 +18,21 @@ function QuestionForm({ addQuestion }) {
     });
   }
 
-  // Handle form submission
+  // Handling form submission
   function handleSubmit(event) {
     event.preventDefault();
 
-    // Validate the form inputs
+    // Validating the form inputs
     const newQuestion = {
       prompt: formData.prompt,
       answers: [formData.answer1, formData.answer2, formData.answer3, formData.answer4],
       correctIndex: formData.correctIndex,
     };
 
-    // Add the new question to the database 
+    // Adding the new question to database 
     addQuestion(newQuestion);
 
-    // Clear the form inputs after submission
+    // Clearing the form inputs 
     setFormData({
       prompt: "",
       answer1: "",

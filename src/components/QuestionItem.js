@@ -5,16 +5,16 @@ function QuestionItem({ question, deleteQuestion, updateCorrectAnswer }) {
 
   const [selectedIndex, setSelectedIndex] = useState(correctIndex);
 
-  // Handle changing the correct answer
+  // Changing the correct answer
   const handleChange = (event) => {
     const newIndex = parseInt(event.target.value);
     setSelectedIndex(newIndex);
-    updateCorrectAnswer(id, newIndex); // Call updateCorrectAnswer to update the server
+    updateCorrectAnswer(id, newIndex); 
   };
 
-  // Handle deleting the question
+  // deleting the question
   const handleDelete = () => {
-    deleteQuestion(id); // Call deleteQuestion to remove the question from the server
+    deleteQuestion(id); 
   };
 
   const options = answers.map((answer, index) => (
